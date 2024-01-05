@@ -14,7 +14,7 @@ import torchaudio
 from deepspeech_pytorch.configs.train_config import SpectConfig, AugmentationConfig
 from deepspeech_pytorch.loader.spec_augment import spec_augment
 
-torchaudio.set_audio_backend("sox_io")
+# torchaudio.set_audio_backend("sox_io")
 
 
 def load_audio(path):

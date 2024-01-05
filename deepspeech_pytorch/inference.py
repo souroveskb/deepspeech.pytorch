@@ -73,8 +73,10 @@ def transcribe(cfg: TranscribeConfig):
         decoded_offsets=decoded_offsets,
         cfg=cfg
     )
-    print(json.dumps(results))
 
+    return results['output'][0]['transcription']
+    # print()
+    # print(json.dumps(results))
 
 def run_transcribe(audio_path: str,
                    spect_parser: ChunkSpectrogramParser,
@@ -96,4 +98,5 @@ def run_transcribe(audio_path: str,
             all_outs.append(out.cpu())
     all_outs = torch.cat(all_outs, axis=1) # combine outputs of chunks in one tensor
     decoded_output, decoded_offsets = decoder.decode(all_outs)
+    # print(decoded_output)
     return decoded_output, decoded_offsets

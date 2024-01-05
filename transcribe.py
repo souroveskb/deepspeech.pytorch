@@ -10,8 +10,8 @@ cs.store(name="config", node=TranscribeConfig)
 
 @hydra.main(config_path='.', config_name="config")
 def hydra_main(cfg: TranscribeConfig):
-    transcribe(cfg=cfg)
-
+    result = transcribe(cfg=cfg)
+    print(result)
 
 if __name__ == '__main__':
     hydra_main()

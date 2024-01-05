@@ -25,8 +25,8 @@ class ModelConfig:
 
 @dataclass
 class InferenceConfig:
-    lm: LMConfig = LMConfig()
-    model: ModelConfig = ModelConfig()
+    lm: LMConfig = field(default_factory=LMConfig)
+    model: ModelConfig = field(default_factory=ModelConfig)
 
 
 @dataclass

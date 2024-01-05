@@ -178,4 +178,6 @@ class GreedyDecoder(Decoder):
                                                    sizes,
                                                    remove_repetitions=True,
                                                    return_offsets=True)
+
+        # print(strings)
         return strings, offsets
