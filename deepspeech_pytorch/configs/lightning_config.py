@@ -10,8 +10,8 @@ class ModelCheckpointConf:
     # filepath: Optional[str] = None
     monitor: Optional[str] = None
     verbose: bool = False
-    save_last: Optional[bool] = None
-    save_top_k: Optional[int] = 3
+    save_last: Optional[bool] = True
+    save_top_k: Optional[int] = 1
     save_weights_only: bool = False
     mode: str = "min"
     # dirpath: Any = None  # Union[str, Path, NoneType]
