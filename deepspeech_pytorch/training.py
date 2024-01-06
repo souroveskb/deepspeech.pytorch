@@ -20,11 +20,7 @@ def train(cfg: DeepSpeechConfig):
         checkpoint_callback = FileCheckpointHandler(
             cfg=cfg.checkpoint
         )
-        if cfg.load_auto_checkpoint:
-            resume_from_checkpoint = checkpoint_callback.find_latest_checkpoint()
-            if resume_from_checkpoint:
-                cfg.trainer.resume_from_checkpoint = resume_from_checkpoint
-
+        
     data_loader = DeepSpeechDataModule(
         labels=labels,
         data_cfg=cfg.data,
@@ -45,4 +41,10 @@ def train(cfg: DeepSpeechConfig):
         devices=[0],
         callbacks=[checkpoint_callback] if cfg.trainer.enable_checkpointing else None,
     )
-    trainer.fit(model, data_loader)
+    if cfg.load_auto_checkpoint:
+        resume_from_checkpoint = checkpoint_callback.find_latest_checkpoint()
+        if resume_from_checkpoint:
+            ckpt_file_path = resume_from_checkpoint
+            trainer.fit(model, data_loader, ckpt_path=ckpt_file_path)
+        else:
+            trainer.fit(model, data_loader)

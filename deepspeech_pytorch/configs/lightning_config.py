@@ -8,13 +8,12 @@ class ModelCheckpointConf:
     _target_: str = "pytorch_lightning.callbacks.ModelCheckpoint"
     dirpath: Optional[str] = '../../snapshots'
     # filepath: Optional[str] = None
-    monitor: Optional[str] = None
+    monitor: Optional[str] = 'cer'
     verbose: bool = False
     save_last: Optional[bool] = True
-    save_top_k: Optional[int] = 1
+    save_top_k: Optional[int] = 2
     save_weights_only: bool = False
     mode: str = "min"
-    # dirpath: Any = None  # Union[str, Path, NoneType]
     filename: Optional[str] = "deepspeech_checkpoint_{epoch}"
     auto_insert_metric_name: bool = True
     every_n_train_steps: Optional[int] = None

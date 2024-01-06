@@ -88,4 +88,4 @@ class DeepSpeechConfig:
     data: DataConfig = field(default_factory=DataConfig)
     augmentation: AugmentationConfig = field(default_factory=AugmentationConfig)
     seed: int = 123456  # Seed for generators
-    load_auto_checkpoint: bool = False  # Automatically load the latest checkpoint from save folder
+    load_auto_checkpoint: bool = True  # Automatically load the latest checkpoint from save folder
