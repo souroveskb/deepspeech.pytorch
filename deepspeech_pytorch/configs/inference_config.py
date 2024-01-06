@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from deepspeech_pytorch.enums import DecoderType
 
